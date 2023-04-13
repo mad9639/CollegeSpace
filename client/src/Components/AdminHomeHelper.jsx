@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { adminLogout } from '../redux/action/adminAction'
-
+import '../Style/navbar.css'
+import Logo from '../Style/Images/logo-9.png';
 
 const Home = () => {
     const store = useSelector(store => store)
@@ -22,43 +23,43 @@ const Home = () => {
     return (
         <div className="container-fluid">
           
-            <nav className="navbar navbar-expand-lg navbar-light bg-light adminNav">
-                <h4 className="navbar-brand mt-1" href="">ABES EC</h4>
+            <nav className="navbar navbar-expand-lg navbar-light bg-dark adminNav">
+                    <img src= {Logo} />
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNav">
-                    <ul className="navbar-nav">
+                    <ul className="navbar-nav" style = {{display: "flex" ,width: "100%", justifyContent: "space-evenly"}} >
                         <li className="nav-item active">
-                            <button type="button" className="btn"><Link to="/admin"><li>{name.toUpperCase()}</li></Link></button>
+                                    <Link to="/admin" className = "linkItem">{name.toUpperCase()}</Link>
                         </li>
                         <li className="nav-item">
-                            <button type="button" className="btn btn-outline-secondary"><Link to="/admin/addFaculty"><li>ADD FACULTY</li></Link></button>
+                                    <Link to="/admin/addFaculty" className = "linkItem">ADD FACULTY</Link>
                         </li>
                         <li className="nav-item">
-                            <button type="button" className="btn"><Link to="/admin/addStudent"><li>ADD STUDENT</li></Link></button>
+                                    <Link to="/admin/addStudent" className = "linkItem">ADD STUDENT</Link>
                         </li>
                         <li className="nav-item">
-                            <button type="button" className="btn"><Link to="/admin/addSubject"><li>ADD SUBJECT</li></Link></button>
+                                    <Link to="/admin/addSubject" className = "linkItem">ADD SUBJECT</Link>
                         </li>
                         <li className="nav-item">
-                            <button type="button" className="btn"><Link to="/admin/addAdmin"><li>ADD ADMIN</li></Link></button>
+                                    <Link to="/admin/addAdmin" className = "linkItem">ADD ADMIN</Link>
                         </li>
                         <li className="nav-item">
-                            <button type="button" className="btn"><Link to="/admin/allFaculties"><li>OUR FACULTIES</li></Link></button>
+                                    <Link to="/admin/allFaculties" className = "linkItem">OUR FACULTIES</Link>
                         </li>
                         <li className="nav-item">
-                            <button type="button" className="btn"><Link to="/admin/allStudents"><li>OUR STUDENTS</li></Link></button>
+                                    <Link to="/admin/allStudents" className = "linkItem">OUR STUDENTS</Link>
                         </li>
                         <li className="nav-item">
-                            <button type="button" className="btn"><Link to="/admin/allSubject"><li>SUBJECTS</li></Link></button>
+                                    <Link to="/admin/allSubject" className = "linkItem">SUBJECTS</Link>
                         </li>
 
                     </ul>
                 </div>
                 <div>
 
-                    <button style={{ listStyle: "None" }} onClick={logoutHandler} type="button" className="btn"><li>LOGOUT</li></button>
+                    <button style={{ listStyle: "None" }} onClick={logoutHandler} type="button" style= {{color : "grey", padding : "8px", borderRadius : "10px"}}>LOGOUT</button>
 
                 </div>
             </nav>

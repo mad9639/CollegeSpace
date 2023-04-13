@@ -1,0 +1,21 @@
+.btn{
+    color: black;
+
+
+}
+
+.nav-item{
+    margin: 5px;
+}
+.nav-item:hover{
+
+text-decoration: none;
+}
+
+.linkItem {
+    color: grey !important;
+}
+
+.linkItem:hover{
+    text-decoration: none;
+}

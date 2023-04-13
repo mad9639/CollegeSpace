@@ -1,3 +1,4 @@
+const connectDB = require('./config/database')
 const express = require('express');
 const http = require('http')
 const socket =  require('socket.io')
@@ -6,8 +7,7 @@ const passport = require('passport')
 const cors = require('cors')
 const morgan = require('morgan')
 const dotenv = require('dotenv');
-dotenv.config()
-
+dotenv.config({path:"./config/test.env"})
 //MIDDILWARES
 const app = express();
 let server = http.createServer(app);
@@ -15,7 +15,6 @@ let io = socket(server);
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json());
 app.use(cors())
-
 
 const adminRoutes = require('./routes/adminRoutes')
 const facultyRoutes = require('./routes/facultyRoutes')
@@ -72,16 +71,8 @@ app.use((error, req, res, next) => {
 })
 
 const PORT = process.env.PORT || 5000;
+connectDB()
 
-mongoose.connect(process.env.MONGO_URL.replace("<password>", process.env.MONGO_PASSWORD)
-, { useNewUrlParser: true, useUnifiedTopology: true,useCreateIndex:true }).then(() => {
-    _response.database = "Healthy"
-    console.log("Database Connected")
-    console.log("server Started on PORT", PORT)
-}).catch((err) => {
-    _response.database = "Unhealthy"
-    console.log("Error in connecting to DataBase", err.message)
-})
 
 app.use('/',(req,res)=>{
     res.status(200).json(_response)
